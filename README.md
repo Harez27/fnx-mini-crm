@@ -26,7 +26,7 @@ A Laravel 13 admin panel for managing companies and employees, built for the FNX
 Clone the repository and open its folder in Terminal:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/Harez27/fnx-mini-crm.git
 cd fnx-mini-crm
 ```
 
@@ -107,14 +107,10 @@ The sample data is created locally and is not required for normal use.
 
 ## Screenshots
 
-Assessment screenshots are in the `screenshots/` folder:
+Screenshots demonstrate the company and employee CRUD pages,
+pagination, company logo upload, and API response.
 
-- `companies.png` — company list and pagination
-- `company-logo.png` — uploaded logo
-- `employees.png` — employee list and pagination
-- `company-form.png` — company form
-- `employee-form.png` — employee form
-- `api.png` — company API response
+[View assessment screenshots](screenshots/)
 
 ## Notes
 
