@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $companies = Company::withCount('employees')
             ->latest()
@@ -17,12 +19,12 @@ class CompanyController extends Controller
         return view('companies.index', compact('companies'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('companies.create');
     }
 
-    public function store(CompanyRequest $request)
+    public function store(CompanyRequest $request): RedirectResponse
     {
         $data = $request->validated();
         unset($data['logo']);
@@ -39,7 +41,7 @@ class CompanyController extends Controller
             ->with('success', 'Company created successfully.');
     }
 
-    public function show(Company $company)
+    public function show(Company $company): View
     {
         $company->loadCount('employees');
         $company->load('employees');
@@ -47,12 +49,12 @@ class CompanyController extends Controller
         return view('companies.show', compact('company'));
     }
 
-    public function edit(Company $company)
+    public function edit(Company $company): View
     {
         return view('companies.edit', compact('company'));
     }
 
-    public function update(CompanyRequest $request, Company $company)
+    public function update(CompanyRequest $request, Company $company): RedirectResponse
     {
         $data = $request->validated();
         unset($data['logo']);
@@ -75,7 +77,7 @@ class CompanyController extends Controller
             ->with('success', 'Company updated successfully.');
     }
 
-    public function destroy(Company $company)
+    public function destroy(Company $company): RedirectResponse
     {
         if ($company->employees()->exists()) {
             return back()->with(

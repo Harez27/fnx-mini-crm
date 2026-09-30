@@ -14,6 +14,9 @@ class Company extends Model
         'website',
     ];
 
+    /**
+     * @return HasMany<Employee, $this>
+     */
     public function employees(): HasMany
     {
         return $this->hasMany(Employee::class);
